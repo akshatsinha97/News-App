@@ -35,17 +35,20 @@ function News(props: {
 
   useEffect(() => {
     async function fetchAPI() {
-      let url: string = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${data.page}&pageSize=${props.pageSize}`;
+      let url: string = `https://newsapi.org/v2/to-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${data.page}&pageSize=${props.pageSize}`;
       setLoading(true);
       props.setProgress(10);
       let rawData = await fetch(url);
       props.setProgress(70);
       let parsedData = await rawData.json();
-      setData({
-        ...data,
-        articles: parsedData.articles,
-        totalResults: parsedData.totalResults,
-      });
+      if (parsedData) {
+        setData({
+          ...data,
+          articles: parsedData.articles,
+          totalResults: parsedData.totalResults,
+        });
+      } else {
+      }
       setLoading(false);
       props.setProgress(100);
       document.title = `InShorts - ${capitalize(props.category)}`;
