@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
-import { Button, Tooltip } from "@mui/material";
+import { Fab } from "@mui/material";
 import output from "../constants/output";
 
 const articles: any = [];
@@ -104,28 +104,24 @@ function News(props: {
             })}
         </div>
         <div className="grid grid-cols-2 gap-4 place-items-center my-8">
-          <Tooltip title="Previous">
-            <Button
-              variant="outlined"
-              disabled={data.page <= 1}
-              onClick={handlePreviousClick}
-              href="#contained-buttons"
-            >
-              Previous
-            </Button>
-          </Tooltip>
-          <Tooltip title="Next">
-            <Button
-              variant="outlined"
-              disabled={
-                data.page + 1 > Math.ceil(data.totalResults / props.pageSize)
-              }
-              onClick={handleNextClick}
-              href="#contained-buttons"
-            >
-              Next
-            </Button>
-          </Tooltip>
+          <Fab
+            variant="extended"
+            color="primary"
+            disabled={data.page <= 1}
+            onClick={handlePreviousClick}
+          >
+            Previous
+          </Fab>
+          <Fab
+            variant="extended"
+            color="primary"
+            disabled={
+              data.page + 1 > Math.ceil(data.totalResults / props.pageSize)
+            }
+            onClick={handleNextClick}
+          >
+            Next
+          </Fab>
         </div>
       </div>
     </>
