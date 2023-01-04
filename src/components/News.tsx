@@ -3,26 +3,12 @@ import React, { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
 import { Button, Tooltip } from "@mui/material";
 
-type TArticle = {
-  source: {
-    id: string | null;
-    name: string;
-  };
-  author: string | null;
-  title: string;
-  description: string | null;
-  url: string;
-  urlToImage: string | null;
-  publishedAt: string;
-  content: string | null;
-};
-
-const articles: TArticle[] = [];
+const articles: any = [];
 
 function News(props: {
   pageSize: number;
   category: string;
-  country: string;
+  lang: string;
   apikey: string;
   setProgress: any;
 }) {
@@ -35,17 +21,22 @@ function News(props: {
 
   useEffect(() => {
     async function fetchAPI() {
-      let url: string = `https://newsapi.org/v2/to-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${data.page}&pageSize=${props.pageSize}`;
+      let url: string = `https://api.newscatcherapi.com/v2/latest_headlines?topic=${props.category}&lang=${props.lang}&page_size=${props.pageSize}`;
       setLoading(true);
       props.setProgress(10);
-      let rawData = await fetch(url);
+      let rawData = await fetch(url, {
+        method: "GET",
+        headers: {
+          "x-api-key": props.apikey,
+        },
+      });
       props.setProgress(70);
       let parsedData = await rawData.json();
       if (parsedData) {
         setData({
           ...data,
           articles: parsedData.articles,
-          totalResults: parsedData.totalResults,
+          totalResults: parsedData.total_pages,
         });
       } else {
       }
@@ -86,21 +77,21 @@ function News(props: {
         <div className="grid grid-cols-3 place-items-center  gap-4 my-8">
           {loading && <div>Loading...</div>}
           {!loading &&
-            data.articles.map((element) => {
+            data.articles.map((element: any) => {
               return (
-                <div key={element.url}>
+                <div key={element.link}>
                   <NewsItem
                     title={element.title}
-                    imageUrl={element.urlToImage}
+                    imageUrl={element.media}
                     description={
-                      element.description
-                        ? element.description?.slice(0, 88) + "..."
+                      element.excerpt
+                        ? element.excerpt?.slice(0, 88) + "..."
                         : ""
                     }
-                    url={element.url}
-                    publishedAt={element.publishedAt}
+                    url={element.link}
+                    publishedAt={element.published_date}
                     author={element.author ? element.author : "Anonymous"}
-                    sourceName={element.source.name}
+                    sourceName={element.rights}
                   />
                 </div>
               );

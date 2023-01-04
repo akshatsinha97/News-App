@@ -7,6 +7,7 @@ import { useState } from "react";
 function App() {
   const apikey = process.env.REACT_APP_NEWS_API || "";
   const [progress, setProgress] = useState(0);
+  const pageSize = 9;
 
   return (
     <>
@@ -25,8 +26,8 @@ function App() {
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
+                lang="en"
+                pageSize={pageSize}
                 category="business"
               />
             }
@@ -37,8 +38,8 @@ function App() {
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
+                lang="en"
+                pageSize={pageSize}
                 category="entertainment"
               />
             }
@@ -49,9 +50,9 @@ function App() {
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
-                category="general"
+                lang="en"
+                pageSize={pageSize}
+                category="news"
               />
             }
           />
@@ -61,21 +62,21 @@ function App() {
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
-                category="general"
+                lang="en"
+                pageSize={pageSize}
+                category="news"
               />
             }
           />
           <Route
-            path="/health"
+            path="/beauty"
             element={
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
-                category="health"
+                lang="en"
+                pageSize={pageSize}
+                category="beauty"
               />
             }
           />
@@ -85,33 +86,129 @@ function App() {
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
+                lang="en"
+                pageSize={pageSize}
                 category="science"
               />
             }
           />
           <Route
-            path="/sports"
+            path="/sport"
             element={
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
-                category="sports"
+                lang="en"
+                pageSize={pageSize}
+                category="sport"
               />
             }
           />
           <Route
-            path="/technology"
+            path="/travel"
             element={
               <News
                 setProgress={setProgress}
                 apikey={apikey}
-                country="in"
-                pageSize={6}
-                category="technology"
+                lang="en"
+                pageSize={pageSize}
+                category="travel"
+              />
+            }
+          />
+          <Route
+            path="/food"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="food"
+              />
+            }
+          />
+          <Route
+            path="/music"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="music"
+              />
+            }
+          />
+          <Route
+            path="/gaming"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="gaming"
+              />
+            }
+          />
+          <Route
+            path="/energy"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="energy"
+              />
+            }
+          />
+          <Route
+            path="/economics"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="economics"
+              />
+            }
+          />
+          <Route
+            path="/finance"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="finance"
+              />
+            }
+          />
+          <Route
+            path="/politics"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="politics"
+              />
+            }
+          />
+          <Route
+            path="/tech"
+            element={
+              <News
+                setProgress={setProgress}
+                apikey={apikey}
+                lang="en"
+                pageSize={pageSize}
+                category="tech"
               />
             }
           />
