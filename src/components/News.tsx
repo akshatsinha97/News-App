@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
 import { Button, Tooltip } from "@mui/material";
+import output from "../constants/output";
 
 const articles: any = [];
 
@@ -32,13 +33,18 @@ function News(props: {
       });
       props.setProgress(70);
       let parsedData = await rawData.json();
-      if (parsedData) {
+      if (parsedData.status === "ok") {
         setData({
           ...data,
           articles: parsedData.articles,
           totalResults: parsedData.total_pages,
         });
       } else {
+        setData({
+          ...data,
+          articles: output.articles,
+          totalResults: output.total_pages,
+        });
       }
       setLoading(false);
       props.setProgress(100);
