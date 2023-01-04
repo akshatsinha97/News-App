@@ -80,7 +80,7 @@ function News(props: {
           InShorts - Top <strong>{capitalize(props.category)} </strong>
           Headlines
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 place-items-center  gap-4 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center  gap-4 my-8">
           {loading && <div>Loading...</div>}
           {!loading &&
             data.articles.map((element: any) => {
