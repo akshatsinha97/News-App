@@ -9,48 +9,48 @@ import Badge from "@mui/material/Badge";
 function NewsItem(props: any) {
   return (
     <div>
-      <Badge
+      {/* <Badge
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
         }}
         badgeContent={props.sourceName}
         color="error"
-      >
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 140 }}
-            image={props.imageUrl}
-            title={props.title}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {props.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {props.description}
-            </Typography>
-          </CardContent>
-          <Typography>
-            <div className="m-2 text-xs">
-              <strong>By:</strong> {props.author} <strong>at:</strong>{" "}
-              {props.publishedAt}
-            </div>
+      > */}
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={props.imageUrl}
+          title={props.title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {props.title}
           </Typography>
-          <div className="ml-2 my-2">
-            <Typography>
-              <Button
-                variant="contained"
-                href={props.url}
-                target="_blank"
-                size="small"
-              >
-                Read More
-              </Button>
-            </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {props.description}
+          </Typography>
+        </CardContent>
+        <Typography>
+          <div className="m-2 text-xs">
+            <strong>By:</strong> {props.author} <strong>at:</strong>{" "}
+            {props.publishedAt}
           </div>
-        </Card>
-      </Badge>
+        </Typography>
+        <div className="ml-2 my-2">
+          <Typography>
+            <Button
+              variant="contained"
+              href={props.url}
+              target="_blank"
+              size="small"
+            >
+              Read More
+            </Button>
+          </Typography>
+        </div>
+      </Card>
+      {/* </Badge> */}
     </div>
   );
 }
